@@ -1,0 +1,21 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+{% load static %}
+<h1>This is CHAI YON XING portfolio</h1>
+<a href="{% url 'blog:all_blogs' %}"><h5>Go to Blog Page</h5></a>
+<img class=img-thumbnail width="200" height="200" src="{% static 'portfolio/20150430_134109.jpg' %}" >
+<a href="{% static 'portfolio/RM400 payback.pdf' %}"><h2>Click Me</h2></a>
+{{ projects }}
+<br>
+{% for banana in projects %}
+{{ banana }}
+<br>
+<h3>{{ banana.title }}</h3>
+<p>{{ banana.description }}</p>
+{{ banana.image.url }}
+<img src="{{ banana.image.url }}" class="img-thumbnail">
+{% if banana.url %}
+<a href="{{ banana.url }}"><h5>Click Link</h5></a>
+{% endif %}
+{% endfor %}
+{% endblock %}
